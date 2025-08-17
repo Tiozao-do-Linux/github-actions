@@ -8,7 +8,7 @@ on:
 jobs:
 
   job-01:
-    runs-on: gitea-ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Executar comandos
         run: |
