@@ -1,0 +1,70 @@
+name: Apenas Executar comandos
+run-name: ${{ github.actor }} está estudando GitHub Actions
+
+on:
+
+  workflow_dispatch:
+
+jobs:
+
+  job-01:
+    runs-on: gitea-ubuntu-latest
+    steps:
+      - name: Executar comandos
+        run: |
+          echo "======================================================"
+          cat /etc/os-release
+          echo "======================================================"
+          which apt 2>/dev/null || echo "NOT apt"
+          which dnf 2>/dev/null || echo "NOT dnf"
+          which apk 2>/dev/null || echo "NOT apk"
+          which docker 2>/dev/null || echo "NOT docker"
+          which git 2>/dev/null || echo "NOT git"
+
+  job-02:
+    needs: job-01
+    runs-on: ubuntu-latest
+    container: python:slim
+    steps:
+      - name: Executar commandos
+        run: |
+          echo "======================================================"
+          cat /etc/os-release
+          echo "======================================================"
+          python --version
+
+  job-03:
+    needs: job-02
+    runs-on: ubuntu-latest
+    container: jarbelix/samba4-addc:debian
+    steps:
+      - name: Executar commandos
+        run: |
+          echo "======================================================"
+          cat /etc/os-release
+          echo "======================================================"
+          samba --version
+
+  job-04:
+    needs: job-03
+    runs-on: ubuntu-latest
+    container: nginx
+    steps:
+      - name: Executar commandos
+        run: |
+          echo "======================================================"
+          cat /etc/os-release
+          echo "======================================================"
+          nginx --version
+
+  job-05:
+    needs: job-04
+    runs-on: ubuntu-latest
+    steps:
+      - name: Executar commandos
+        run: |
+          echo "======================================================"
+          docker images
+          echo "======================================================"
+          docker ps -a
+          echo "======================================================"
