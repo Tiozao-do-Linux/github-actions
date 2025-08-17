@@ -9,4 +9,4 @@ jobs:
 
     steps:
       - name: Show Runner Name
-        run: echo "The job is running on runner:" $RUNNER_NAME
+        run: echo "The job is running on runner:" ${{ runner.name }}
