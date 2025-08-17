@@ -55,7 +55,7 @@ jobs:
           echo "======================================================"
           cat /etc/os-release
           echo "======================================================"
-          nginx --version
+          nginx -version
 
   job-05:
     needs: job-04
