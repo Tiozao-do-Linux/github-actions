@@ -1,0 +1,11 @@
+name: Display Runner Name
+
+on:
+  workflow_dispatch:
+
+jobs:
+  display_info:
+    runs-on: ubuntu-latest # Or your self-hosted runner labels
+    steps:
+      - name: Show Runner Name
+        run: echo "The job is running on runner: $RUNNER_NAME"
