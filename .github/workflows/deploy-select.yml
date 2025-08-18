@@ -1,0 +1,30 @@
+name: Workflow With Select
+
+on:
+  workflow_dispatch:
+    inputs:
+      docker-server:
+        description: Select the docker server
+        required: true
+        type: choice
+        options:
+        - ubuntu-latest
+        - ubuntu-24.04
+        - ubuntu-22.04
+
+jobs:
+
+  test-runner-with-workflow-inputs:
+
+    runs-on: [ "${{ inputs.docker-server }}" ]
+
+    steps:
+
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Docker ps
+        run: |
+          echo "======================================================"
+          docker ps
+          echo "======================================================"
