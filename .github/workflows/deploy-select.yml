@@ -23,8 +23,8 @@ jobs:
       - name: Checkout do repositório
         uses: actions/checkout@v4
 
-      - name: Docker ps
+      - name: Execute commands
         run: |
           echo "======================================================"
-          docker ps
+          cat /etc/os-release
           echo "======================================================"
