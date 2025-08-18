@@ -23,7 +23,7 @@ jobs:
       - name: Checkout do repositório
         uses: actions/checkout@v4
 
-      - name: Execute commands
+      - name: Execute commands in ${{ github.event.inputs.docker-server }}
         run: |
           echo "======================================================"
           cat /etc/os-release
